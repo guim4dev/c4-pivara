@@ -3,12 +3,12 @@
 
   <div class="header-tracking">
     <div class="header-center">
-      <NavigationHeaderItem iconName="notifications" itemName="Avisos"></NavigationHeaderItem>
-      <NavigationHeaderItem iconName="school" itemName="Turmas"></NavigationHeaderItem>
-      <NavigationHeaderItem iconName="account_circle" itemName="Alunos"></NavigationHeaderItem>
+      <NavigationHeaderItem iconName="notifications" itemName="Avisos" link="/avisos"></NavigationHeaderItem>
+      <NavigationHeaderItem iconName="school" itemName="Turmas" link="/turmas"></NavigationHeaderItem>
+      <NavigationHeaderItem iconName="account_circle" itemName="Alunos" link="/alunos"></NavigationHeaderItem>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 import NavigationHeaderItem from '@/components/NavigationHeaderItem.vue'

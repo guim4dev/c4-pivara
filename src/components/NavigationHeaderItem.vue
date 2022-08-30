@@ -1,16 +1,19 @@
 <template>
-    <a href="http://localhost:8081/avisos">
+    <router-link :to="link">
         <figure class="icon"><figcaption  id="mouse">
             <span class="material-symbols-outlined">{{ iconName }}</span></figcaption>
             <figcaption id="mouse">{{ itemName }}</figcaption>
         </figure>
-    </a>
+    </router-link>
 </template>
 
 <script>
 export default{
     name:'NavigationHeaderItem',
     props: {
+        link:{
+            type:String
+        },
         iconName: {
             type: String
         },
@@ -46,9 +49,5 @@ export default{
   .icon {
     width: 60px;
     display: inline-block;
-  }
-
-  #mouse {
-      
   }
 </style>

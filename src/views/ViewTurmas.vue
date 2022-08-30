@@ -12,6 +12,7 @@
     width: 100%;
     flex-direction: column;
     height: 100%;
+    padding: 15px;
   }
 </style>
 
