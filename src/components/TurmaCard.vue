@@ -2,7 +2,7 @@
   <base-card>
     <div class="card-wrapper">
       <div class="card-content">
-        <h6 class="level"><b>{{ turma.level }}</b></h6>
+        <h6 class="level">{{ turma.level }}</h6>
         <h3 class="name">{{ turma.name }}</h3>
       </div>
       <span style="color: #A3B1BF">2022</span>
@@ -14,11 +14,13 @@
   .name {
     font-weight: 700;
     text-align: left;
+    font-size: 20px;
   }
 
   .level {
+    font-weight: 700;
     color: #5451D6;
-    font-size: 17px;
+    font-size: 14px;
     margin-bottom: 6px;
     text-align: left;
   }
