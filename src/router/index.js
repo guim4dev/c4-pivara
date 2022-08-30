@@ -10,15 +10,15 @@ const routes = [
     component: ViewAvisos,
   },
   {
+    path: "/turmas",
+    name: "Turmas",
+    component: ViewTurmas,
+  },
+  {
     path: "/",
     name: "Home",
     component: ViewHome,
   },
-  {
-    path: "/turmas",
-    name: "Turmas",
-    component: ViewTurmas,
-  }
 ];
 
 const router = createRouter({

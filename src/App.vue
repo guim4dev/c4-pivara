@@ -1,5 +1,4 @@
 <template>
-  <p>App neles</p>
   <router-view />
 </template>
 
@@ -22,5 +21,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #F4F6F8;
+  height: 100vh
 }
 </style>
