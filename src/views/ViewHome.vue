@@ -8,6 +8,11 @@
 <script>
 export default {
     name:"ViewHome",
+    mounted(){
+        setTimeout(()=>{
+            this.$router.push("/avisos")
+        },2000)
+    }
 }
 </script>
 <style scoped>
