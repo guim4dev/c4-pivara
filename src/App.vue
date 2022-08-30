@@ -1,4 +1,5 @@
 <template>
+  <p>App neles</p>
   <router-view />
 </template>
 
