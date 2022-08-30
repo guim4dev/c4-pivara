@@ -12,5 +12,8 @@
     border-radius: 4px;
     padding: 24px;
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    min-width: 328px;
   }
 </style>
