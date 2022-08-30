@@ -5,6 +5,7 @@
         <h1>Bem-vinda ao Painel do professor personalizado, aqui você pode checar a saúde escolar das suas turmas e acompanhar o desenvolvimento dos seus alunos.</h1>
     </div>
 </template>
+
 <script>
 export default {
     name:"ViewHome",
@@ -15,6 +16,7 @@ export default {
     }
 }
 </script>
+
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
     #main{

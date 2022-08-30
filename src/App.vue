@@ -1,10 +1,16 @@
 <template>
-  <router-view />
+  <NavigationHeader/>
+  <router-view/>
 </template>
 
 <script>
+import NavigationHeader from '@/components/NavigationHeader.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    NavigationHeader
+  }
 }
 </script>
 
