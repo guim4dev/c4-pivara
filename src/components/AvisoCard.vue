@@ -1,26 +1,21 @@
 <template>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <base-card id="aviso-card">
+    <base-card :id="[isVertical?'vertical':'horizontal']">
         <section id="top">
-            <el-tag type="success">Turma X</el-tag>
-            <span>2 horas atrás</span>
+            <el-tag :type="this.statusTag.type">
+                <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">{{ this.statusTag.icon }}</span>
+                {{ this.statusTag.text }}
+            </el-tag>
+            <span id="date">{{ date }}</span>
         </section>
         <section id="content">
             <span class="material-symbols-outlined">error</span>
-            <h2>Alerta queda de frequência</h2>
+            <h2>{{ text }}</h2>
         </section>
         <section id="tags">
-            <el-tag type="custom">
-                <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">school</span>
-                Ensino-médio
-            </el-tag>
-            <el-tag type="brand-color" style="margin:0 6px">
-                <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">group</span>
-                1º ano A
-            </el-tag>
-            <el-tag type="warning">
-                <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">sell</span>
-                Noite
+            <el-tag :type="tag.type" v-for="tag in tags" :key="tags.indexOf(tag,tags)">
+                <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">{{tag.icon}}</span>
+                {{ tag.text }}
             </el-tag>
         </section>
     </base-card>
@@ -33,6 +28,30 @@ export default {
     components:{
         BaseCard,
         ElTag
+    },
+    data(){
+        return{
+            statusTag:{},
+        }
+    },
+    props:{
+        isVertical:Boolean,
+        text:String,
+        date:String,
+        status:String,
+        tags:Array
+    },
+    mounted(){
+        switch(this.status){
+            case 'Novo':
+                this.statusTag = {text:this.status,type:'warning',icon:'error'}
+                break;
+            case 'Resolvido':
+                this.statusTag = {text:this.status,type:'success',icon:'done'}
+                break;
+            case 'Pendente':
+                this.statusTag = {text:this.status,type:'danger',icon:'error'}
+        }
     }
 }
 </script>
@@ -41,16 +60,13 @@ export default {
         margin: 25px 0;
         display: flex;
         align-content: center;
-        font-size: 16px;
+        font-size: 14px;
     }
     #content span{
         margin-right: 8px;
     }
-    .tag{
-        font-size: 12px;
-        display: flex;
-        flex-direction: row;
-        padding: 2px 6px
+    .el-tag{
+        margin-right: 8px;
     }
     
     #top{
@@ -72,4 +88,15 @@ export default {
         --el-tag-hover-color: #EEEEFB;
         --el-tag-text-color: #5451D6
     }
+
+    #horizontal{
+        width: 180px !important;
+        margin-right: 15px;
+    }
+
+    @media (min-width: 750px){
+    #vertical{
+      width: 750px;
+    }
+  }
 </style>

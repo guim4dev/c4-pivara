@@ -1,5 +1,5 @@
 <template>
-  <base-card>
+  <base-card id="vertical">
     <div class="card-wrapper">
       <div class="card-content">
         <h6 class="level">{{ turma.level }}</h6>
@@ -43,6 +43,12 @@
     justify-content: space-between;
     width: 100%;
     margin-right: 16px;
+  }
+
+  @media (min-width: 750px){
+    #vertical{
+      width: 750px;
+    }
   }
 </style>
 

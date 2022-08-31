@@ -3,9 +3,7 @@
 
   <div class="header-tracking">
     <div class="header-center">
-      <NavigationHeaderItem iconName="notifications" itemName="Avisos" link="/avisos"></NavigationHeaderItem>
-      <NavigationHeaderItem iconName="school" itemName="Turmas" link="/turmas"></NavigationHeaderItem>
-      <NavigationHeaderItem iconName="account_circle" itemName="Alunos" link="/alunos"></NavigationHeaderItem>
+      <NavigationHeaderItem v-for = "icon in colorIcon" :key="colorIcon.indexOf(icon, colorIcon)" v-on:click="()=>{this.clearColorIcon();icon.active=true;}" :active="icon.active" :iconPath="icon.default" :itemName="icon.itemName" :link="icon.link"></NavigationHeaderItem>
     </div>
   </div>
 </template> 
@@ -17,33 +15,64 @@ export default {
   name: 'App',
   components: {
     NavigationHeaderItem
+  },
+  data(){
+    return{
+      colorIcon:[
+        {
+          default: 'bell.svg',
+          active: false,
+          itemName: "Avisos",
+          link: "/avisos"
+        },
+        {
+          default: 'notes.svg',
+          active: false,
+          itemName: "Turmas",
+          link: "/turmas"
+        },
+        {
+          default: 'user-circle.svg',
+          active: false,
+          itemName: "Alunos",
+          link: "/alunos"
+        }
+      ]
+    }
+  },
+  methods: {
+    clearColorIcon(){
+      this.colorIcon.forEach(o=>{
+        o.active=false;
+      })
+    }
   }
 }
-  
 </script>
     
 <style scoped>
-  .header-tracking{
+  .header-tracking {
     overflow: hidden;
     background-color: #ffffff;
-    padding: 30px 0px 30px 0px;
+    padding: 20px 0px 10px 0px;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .header-center {
-    float: center;
     margin-top: auto;
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    align-items: center;
+    justify-content: space-around;
   }
 
   @media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: center;
+    
   }
-  .header-center {
-    float: none;
-  }
-}
-  
 </style>
-  

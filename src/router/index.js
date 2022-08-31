@@ -2,7 +2,9 @@ import { createWebHistory, createRouter } from "vue-router";
 import ViewAvisos from "@/views/ViewAvisos.vue";
 import ViewHome from "@/views/ViewHome.vue";
 import ViewTurmas from "@/views/ViewTurmas.vue";
-import ViewTurma from "@/views/ViewTurma.vue";
+import ViewAlunos from "@/views/ViewAlunos.vue";
+import ViewAlunoDetail from "@/views/ViewAlunoDetail.vue";
+import ViewTurmaDetail from "@/views/ViewTurmaDetail.vue";
 
 const routes = [
   {
@@ -16,15 +18,36 @@ const routes = [
     component: ViewTurmas,
   },
   {
+    path: "/turma/:turma_id/disciplina/:disciplina_id",
+    name: "Turma",
+    component: ViewTurmaDetail,
+    meta: {
+      hideNavbar: true,
+      showGoBackHeader: true,
+    }
+  },
+  {
+    path: "/alunos",
+    name: "Alunos",
+    component: ViewAlunos,
+  },
+  {
+    path: "/alunos/:aluno_id",
+    name: "AlunosDetail",
+    component: ViewAlunoDetail,
+    meta: {
+      hideNavbar: true,
+      showGoBackHeader: true,
+    }
+  },
+  {
     path: "/",
     name: "Home",
     component: ViewHome,
+    meta: {
+      hideNavbar: true,
+    }
   },
-  {
-    path: "/turma/:idTurma/disciplina/:idDisciplina",
-    name: "Turma",
-    component: ViewTurma,
-  }
 ];
 
 const router = createRouter({

@@ -17,9 +17,4 @@
     min-width: 328px;
     width: 100%;
   }
-  @media (min-width: 750px){
-    .card{
-      width: 750px;
-    }
-  }
 </style>

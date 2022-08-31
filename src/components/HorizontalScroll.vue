@@ -1,17 +1,86 @@
 <template>
     <div class="horizontal-scroll">
-        <div v-for="item in 8" :key="item">
-            <HoriozontalCard/>
-        </div>
+        <aviso-card v-for="aviso in avisoData" :key="aviso.id" :isVertical="false" :text="aviso.text" :date="aviso.data" :status="aviso.status" :tags="aviso.tags"/>
     </div>
 </template>
 <script>
-import HoriozontalCard from '@/components/HorizontalCard.vue'
+import AvisoCard from '@/components/AvisoCard.vue'
 
 export default {
     name:"HorizontalScroll",
     components:{
-        HoriozontalCard
+        AvisoCard
+    },
+    data(){
+        return{
+            avisoData:[{
+                id:1,
+                text:"Aviso teste 1",
+                status:"Novo",
+                tags:[
+                {
+                    type:"success",
+                    text:"Tag aqui",
+                    icon:"group"
+                }
+                ]
+            },{
+                id:2,
+                text:"Aviso teste 2",
+                status:"Resolvido",
+                tags:[
+                {
+                    type:"success",
+                    text:"Tag aqui",
+                    icon:"group"
+                }
+                ]
+            },{
+                id:1,
+                text:"Aviso teste 1",
+                status:"Novo",
+                tags:[
+                {
+                    type:"success",
+                    text:"Tag aqui",
+                    icon:"group"
+                }
+                ]
+            },{
+                id:2,
+                text:"Aviso teste 2",
+                status:"Resolvido",
+                tags:[
+                {
+                    type:"success",
+                    text:"Tag aqui",
+                    icon:"group"
+                }
+                ]
+            },{
+                id:1,
+                text:"Aviso teste 1",
+                status:"Novo",
+                tags:[
+                {
+                    type:"success",
+                    text:"Tag aqui",
+                    icon:"group"
+                }
+                ]
+            },{
+                id:2,
+                text:"Aviso teste 2",
+                status:"Resolvido",
+                tags:[
+                {
+                    type:"success",
+                    text:"Tag aqui",
+                    icon:"group"
+                }
+                ]
+            }]
+        }
     }
 }
 </script>
