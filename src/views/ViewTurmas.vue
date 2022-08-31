@@ -34,18 +34,21 @@ export default {
           name: "1º Ano A",
           year: '2022',
           vigent: true,
+          turno: 'manhã'
         },
         {
           level: "Ensino Médio",
           name: "1º Ano B",
           year: '2022',
           vigent: true,
+          turno: 'tarde'
         },
         {
           level: "Ensino Médio",
           name: "1º Ano C",
           year: '2022',
           vigent: false,
+          turno: 'noite'
         }
       ]
     }

@@ -2,11 +2,10 @@
   <base-card>
     <div class="card-wrapper">
       <div class="card-content">
-        <h6 class="level">{{ turma.level }}</h6>
-        <h3 class="name">{{ turma.name }}</h3>
-        <el-tag class="custom-el-tag" type="warning">{{ turma.turno }}</el-tag>
+        <h3 class="name">{{ aluno.name }}</h3>
+        <el-tag class="custom-el-tag" type="success">Ativo</el-tag>
       </div>
-      <span style="color: #A3B1BF">2022</span>
+      <span style="color: #A3B1BF">#{{ aluno.ra }}</span>
     </div>
   </base-card>
 </template>
@@ -20,15 +19,7 @@
     font-weight: 700;
     text-align: left;
     font-size: 20px;
-    margin-bottom: 6px;
-  }
-
-  .level {
-    font-weight: 700;
-    color: #5451D6;
-    font-size: 14px;
-    margin-bottom: 6px;
-    text-align: left;
+    margin-bottom: 20px;
   }
 
   .card-wrapper {
@@ -50,13 +41,13 @@
 import BaseCard from '@/components/BaseCard.vue'
 
 export default {
-  name: 'TurmaCard',
+  name: 'AlunoCard',
   components: {
     BaseCard
   },
 
   props: {
-    turma: {
+    aluno: {
       type: Object,
     }
   },
