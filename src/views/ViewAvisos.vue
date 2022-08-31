@@ -16,6 +16,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
 
@@ -23,7 +24,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px;
+    padding: 20px;
     font-family: 'Nunito', sans-serif;
   }
 </style>
