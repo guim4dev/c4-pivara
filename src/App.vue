@@ -1,5 +1,5 @@
 <template>
-  <NavigationHeader/>
+  <NavigationHeader v-if="shouldShowNavbar"/>
   <router-view/>
 </template>
 
@@ -10,6 +10,12 @@ export default {
   name: 'App',
   components: {
     NavigationHeader
+  },
+
+  computed: {
+    shouldShowNavbar() {
+      return !this.$route.meta.hideNavbar
+    }
   }
 }
 </script>

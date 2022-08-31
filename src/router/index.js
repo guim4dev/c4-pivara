@@ -18,6 +18,9 @@ const routes = [
     path: "/",
     name: "Home",
     component: ViewHome,
+    meta: {
+      hideNavbar: true,
+    }
   }
 ];
 
