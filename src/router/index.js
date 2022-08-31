@@ -4,6 +4,7 @@ import ViewHome from "@/views/ViewHome.vue";
 import ViewTurmas from "@/views/ViewTurmas.vue";
 import ViewAlunos from "@/views/ViewAlunos.vue";
 import ViewAlunoDetail from "@/views/ViewAlunoDetail.vue";
+import ViewTurmaDetail from "@/views/ViewTurmaDetail.vue";
 
 const routes = [
   {
@@ -15,6 +16,15 @@ const routes = [
     path: "/turmas",
     name: "Turmas",
     component: ViewTurmas,
+  },
+  {
+    path: "/turma/:turma_id/disciplina/:disciplina_id",
+    name: "Turma",
+    component: ViewTurmaDetail,
+    meta: {
+      hideNavbar: true,
+      showGoBackHeader: true,
+    }
   },
   {
     path: "/alunos",
