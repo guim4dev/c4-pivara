@@ -4,6 +4,7 @@
       <div class="card-content">
         <h6 class="level">{{ turma.level }}</h6>
         <h3 class="name">{{ turma.name }}</h3>
+        <el-tag class="custom-el-tag" type="warning">{{ turma.turno }}</el-tag>
       </div>
       <span style="color: #A3B1BF">2022</span>
     </div>
@@ -11,10 +12,15 @@
 </template>
 
 <style scoped>
+  .custom-el-tag {
+    width: fit-content;
+  }
+
   .name {
     font-weight: 700;
     text-align: left;
     font-size: 20px;
+    margin-bottom: 6px;
   }
 
   .level {
@@ -53,10 +59,6 @@ export default {
     turma: {
       type: Object,
     }
-  },
-
-  created() {
-    console.log('oiiiiieee')   
   },
 }
 </script>

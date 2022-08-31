@@ -1,15 +1,28 @@
 <template>
-  <NavigationHeader/>
+  <NavigationHeader v-if="shouldShowNavbar"/>
+  <GoBackHeader v-if="shouldShowGoBackHeader"/>
   <router-view/>
 </template>
 
 <script>
 import NavigationHeader from '@/components/NavigationHeader.vue'
+import GoBackHeader from '@/components/GoBackHeader.vue'
 
 export default {
   name: 'App',
   components: {
-    NavigationHeader
+    NavigationHeader,
+    GoBackHeader
+  },
+
+  computed: {
+    shouldShowNavbar() {
+      return !this.$route.meta.hideNavbar
+    },
+
+    shouldShowGoBackHeader() {
+      return this.$route.meta.showGoBackHeader
+    }
   }
 }
 </script>
