@@ -2,7 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import ViewAvisos from "@/views/ViewAvisos.vue";
 import ViewHome from "@/views/ViewHome.vue";
 import ViewTurmas from "@/views/ViewTurmas.vue";
-import ViewAlunos from "@/views/ViewAlunos.vue";
+import ViewTurma from "@/views/ViewTurma.vue";
 
 const routes = [
   {
@@ -16,17 +16,14 @@ const routes = [
     component: ViewTurmas,
   },
   {
-    path: "/alunos",
-    name: "Alunos",
-    component: ViewAlunos,
-  },
-  {
     path: "/",
     name: "Home",
     component: ViewHome,
-    meta: {
-      hideNavbar: true,
-    }
+  },
+  {
+    path: "/turma/:idTurma/disciplina/:idDisciplina",
+    name: "Turma",
+    component: ViewTurma,
   }
 ];
 
