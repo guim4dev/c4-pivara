@@ -1,6 +1,6 @@
 <template>
   <div class="header-wrapper">
-    <img src="/img/arrow.svg" @click="goBack"/>
+    <img src="/img/arrow.svg" style="cursor: pointer" @click="goBack"/>
     <img src="/img/blueLogo.svg" />
   </div>
 </template>
@@ -13,6 +13,8 @@
     padding: 0px 20px 0px 20px;
     background-color: white;
     height: 56px;
+    position: sticky;
+    top: 0;
   }
 
 </style>

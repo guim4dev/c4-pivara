@@ -22,8 +22,8 @@ const routes = [
     component: ViewAlunos,
   },
   {
-    path: "/alunos/:aluno_id/disciplinas/:disciplina_id",
-    name: "Alunos",
+    path: "/alunos/:aluno_id",
+    name: "AlunosDetail",
     component: ViewAlunoDetail,
     meta: {
       hideNavbar: true,
