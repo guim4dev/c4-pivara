@@ -1,6 +1,6 @@
 <template>
   <div class="alunos-wrapper">
-    <aluno-card v-for="aluno in alunos" :key="aluno.ra" :aluno="aluno"/>
+    <aluno-card v-for="aluno in alunos" :key="aluno.ra" :location="'/alunos/'+aluno.ra" :aluno="aluno"/>
   </div>
 </template>
 

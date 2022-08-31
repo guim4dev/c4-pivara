@@ -9,8 +9,8 @@
             <span id="date">{{ date }}</span>
         </section>
         <section id="content">
-            <span class="material-symbols-outlined">error</span>
-            <h2>{{ text }}</h2>
+            <span class="material-symbols-outlined" style="font-size:22px;margin-bottom:0">error</span>
+            <h3>{{ text }}</h3>
         </section>
         <section id="tags">
             <el-tag :type="tag.type" v-for="tag in tags" :key="tags.indexOf(tag,tags)">
@@ -60,7 +60,6 @@ export default {
         margin: 25px 0;
         display: flex;
         align-content: center;
-        font-size: 14px;
     }
     #content span{
         margin-right: 8px;

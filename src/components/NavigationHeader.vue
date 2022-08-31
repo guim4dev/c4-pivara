@@ -46,6 +46,21 @@ export default {
         o.active=false;
       })
     }
+  },
+  created(){
+    switch(this.$route.path){
+      case "/avisos":
+        this.colorIcon[0].active = true;
+        break;
+      case "/turmas":
+        this.colorIcon[1].active = true;
+        break;
+      case "/alunos":
+        this.colorIcon[2].active = true;
+        break;
+      default:
+        this.colorIcon[0].active = true
+    }
   }
 }
 </script>

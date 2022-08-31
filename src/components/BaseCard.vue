@@ -1,9 +1,16 @@
 <template>
-  <div class="card">
+  <div class="card" @click="this.$router.push(this.location)">
     <slot></slot>
   </div>
 </template>
-
+<script>
+export default {
+  name:"BaseCard",
+  props:{
+    location:String
+  }
+}
+</script>
 <style scoped>
   .card {
     border: 1px solid var(--color-gray-30);
@@ -16,5 +23,6 @@
     flex-direction: column;
     min-width: 328px;
     width: 100%;
+    cursor: pointer;
   }
 </style>

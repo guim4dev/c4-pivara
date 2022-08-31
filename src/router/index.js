@@ -18,7 +18,7 @@ const routes = [
     component: ViewTurmas,
   },
   {
-    path: "/turma/:turma_id/disciplina/:disciplina_id",
+    path: "/turma/:turma_id",
     name: "Turma",
     component: ViewTurmaDetail,
     meta: {

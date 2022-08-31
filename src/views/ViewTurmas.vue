@@ -1,6 +1,6 @@
 <template>
   <div class="turmas-wrapper">
-    <turma-card v-for="turma in turmas" :key="turma.name" :turma="turma"/>
+    <turma-card v-for="turma in turmas" :key="turma.name" :location="'/turma/'+turma.id" :turma="turma"/>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ export default {
     return {
       turmas: [
         {
+          id:1,
           level: "Ensino Médio",
           name: "1º Ano A",
           year: '2022',
@@ -37,6 +38,7 @@ export default {
           turno: 'manhã'
         },
         {
+          id:1,
           level: "Ensino Médio",
           name: "1º Ano B",
           year: '2022',
@@ -44,6 +46,7 @@ export default {
           turno: 'tarde'
         },
         {
+          id:1,
           level: "Ensino Médio",
           name: "1º Ano C",
           year: '2022',
