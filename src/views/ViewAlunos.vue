@@ -1,6 +1,6 @@
 <template>
   <div class="alunos-wrapper">
-    <aluno-card v-for="aluno in alunos" :key="aluno.ra" :location="'/alunos/'+aluno.ra" :aluno="aluno"/>
+    <aluno-card v-for="aluno in alunos" :key="aluno.codigoAluno" :location="'/alunos/'+aluno.codigoAluno" :aluno="aluno"/>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
     justify-content: top;
     width: 100%;
     flex-direction: column;
-    height: 100%;
+    height: max-content;
     padding: 15px;
   }
 </style>
@@ -28,24 +28,7 @@ export default {
 
   data() {
     return {
-      alunos: [
-        {
-          name: "João Pinheiro",
-          ra: '123'
-        },
-        {
-          name: "Miruliro",
-          ra: '321'
-        },
-        {
-          name: "Camila",
-          ra: '576'
-        },
-        {
-          name: "Dedé Raniere",
-          ra: '222'
-        },
-      ]
+      alunos: this.$store.getters.getStudents
     }
   },
 }

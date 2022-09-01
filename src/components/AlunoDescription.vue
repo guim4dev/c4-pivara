@@ -1,10 +1,10 @@
 <template>
   <div class="content-wrapper">
     <div class="content">
-      <h3 class="name">{{ aluno.name }}</h3>
+      <h3 class="name">{{ aluno.nome }}</h3>
       <el-tag class="custom-el-tag" type="success">Ativo</el-tag>
     </div>
-    <span style="color: #A3B1BF">#{{ aluno.ra }}</span>
+    <span style="color: #A3B1BF">#{{ aluno.codigoAluno }}</span>
   </div>
 </template>
 

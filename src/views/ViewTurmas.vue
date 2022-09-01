@@ -1,6 +1,6 @@
 <template>
   <div class="turmas-wrapper">
-    <turma-card v-for="turma in turmas" :key="turma.name" :location="'/turma/'+turma.id" :turma="turma"/>
+    <turma-card v-for="turma in turmas" :key="turma.codigoTurma" :location="'/turmas/'+turma.codigoTurma" :turma="turma"/>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
     justify-content: top;
     width: 100%;
     flex-direction: column;
-    height: 100%;
+    height: max-content;
     padding: 20px;
   }
 </style>
@@ -28,32 +28,7 @@ export default {
 
   data() {
     return {
-      turmas: [
-        {
-          id:1,
-          level: "Ensino Médio",
-          name: "1º Ano A",
-          year: '2022',
-          vigent: true,
-          turno: 'manhã'
-        },
-        {
-          id:1,
-          level: "Ensino Médio",
-          name: "1º Ano B",
-          year: '2022',
-          vigent: true,
-          turno: 'tarde'
-        },
-        {
-          id:1,
-          level: "Ensino Médio",
-          name: "1º Ano C",
-          year: '2022',
-          vigent: false,
-          turno: 'noite'
-        }
-      ]
+      turmas: this.$store.state.data.turmas
     }
   },
 }
