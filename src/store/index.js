@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 // import VuexPersistence from 'vuex-persistedstate'
 import _ from 'lodash'
+import autenticacaoService from '@/services/Autenticacao/autenticacaoService'
 
 // const vuexPersistence = new VuexPersistence({
 //   key: 'vuex',
@@ -334,7 +335,9 @@ const store = createStore({
       chosenClass: {
         codigoTurma: null,
         nome: null,
-      }
+      },        
+      token:null,
+      professorId:51,
     }
   },
   getters: {
@@ -415,6 +418,9 @@ const store = createStore({
       })
       return num
     },
+    getToken:(state)=>{
+      return state.token
+    }
   },
   
   mutations: {
@@ -424,6 +430,10 @@ const store = createStore({
 
     setChosenClass (state, klass) {
       state.chosenClass = _.pick(klass, ['codigoTurma', 'nome'])
+    },
+
+    async setup(state){
+      state.token = await autenticacaoService()
     }
   }
 })
