@@ -66,7 +66,7 @@ export default {
     }
 
     #chart{
-        width: 100%;
+        width: 40%;
         margin-bottom: 30px;
     }
 

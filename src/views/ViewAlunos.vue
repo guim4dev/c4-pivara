@@ -1,5 +1,6 @@
 <template>
   <div class="alunos-wrapper">
+    <filter-bar/>
     <aluno-card v-for="aluno in alunos" :key="aluno.ra" :location="'/alunos/'+aluno.ra" :aluno="aluno"/>
   </div>
 </template>
@@ -18,12 +19,13 @@
 
 <script>
 import AlunoCard from '@/components/AlunoCard.vue'
+import FilterBar from '@/components/FilterBar.vue'
 
 export default {
   name: 'ViewAlunos',
 
   components: {
-    AlunoCard
+    AlunoCard,FilterBar
   },
 
   data() {

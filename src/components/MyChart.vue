@@ -1,6 +1,6 @@
 <template>
     <div class="chart-card">
-        <line-chart :data="dataChart" format="MM/dd"></line-chart>
+        <line-chart :data="dataChart" />
     </div>
 </template>
 <script>

@@ -1,5 +1,6 @@
 <template>
   <div class="turmas-wrapper">
+    <filter-bar/>
     <turma-card v-for="turma in turmas" :key="turma.name" :location="'/turma/'+turma.id" :turma="turma"/>
   </div>
 </template>
@@ -18,12 +19,13 @@
 
 <script>
 import TurmaCard from '@/components/TurmaCard.vue'
+import FilterBar from '@/components/FilterBar.vue'
 
 export default {
   name: 'ViewTurmas',
 
   components: {
-    TurmaCard
+    TurmaCard,FilterBar
   },
 
   data() {
