@@ -17,7 +17,7 @@ export default {
     },
     async created(){
         this.$store.commit('setup')
-    }
+    },
 }
 </script>
 

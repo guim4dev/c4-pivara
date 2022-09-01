@@ -12,7 +12,9 @@ export default {
   components:{
     AvisoCard
   },
-
+  mounted(){
+    console.log(this.$store.getters.getTurmas)
+  },
   data(){
     return {
       avisoData: this.$store.state.data.avisos,

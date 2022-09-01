@@ -18,7 +18,7 @@ export default {
   },
   data(){
     return{
-      num:this.$store.getters.getAvisosNum(),
+      num:this.$store.getters.getAvisosNum,
       colorIcon:[
         {
           default: 'bell.svg',

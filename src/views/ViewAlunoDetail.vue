@@ -12,29 +12,21 @@
       <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 16px 16px;z-index:0;padding:0 10%">
         <el-select @change="setChosenClass" class="m-2" placeholder="Select" size="large">
           <el-option
-            v-for="{ codigoMatricula, turma } in aluno.turmas"
-            :key="turma.codigoTurma"
+                v-for="{ codigoMatricula, turma } in aluno.turmas"
+                :key="turma.codigoTurma"
             :label="turma.nome"
-            :value="{ id: turma.codigoTurma, nome: turma.nome, codigoMatricula: codigoMatricula }"
+                :value="{ id: turma.codigoTurma, nome: turma.nome, codigoMatricula: codigoMatricula }"
           />
         </el-select>
-        <el-select @change="setChosenDiscipline" class="m-2" placeholder="Select" size="large">
-          <el-option
+    <el-select v-model="chosenDisciplineWatcher" class="m-2" placeholder="this.$store.chosenDiscipline.nome" size="large">
+      <el-option
             v-for="disciplina in listOfDisciplines"
             :key="disciplina.codigo"
-            :label="disciplina.nome"
-            :value="{ codigo: disciplina.codigo, nome: disciplina.nome }"
-          />
-        </el-select>
-        <el-select @change="setTipoGrafico" class="m-2" :placeholder="tipoGrafico.nome" size="large">
-          <el-option
-            v-for="tipo in [{ slug: 'media', nome: 'Média', suffix: '' }, { slug: 'percentualFalta', nome: 'Percentual de Falta', suffix: '%' }]"
-            :key="tipo.slug"
-            :label="tipo.nome"
-            :value="tipo"
-          />
-        </el-select>
-      </div>
+        :label="disciplina.nome"
+        :value="{id: disciplina.id, nome: disciplina.nome}"
+      />
+    </el-select>
+  </div>
     </section>
   </div>
 </template>
@@ -103,9 +95,9 @@ export default {
     this.$store.commit('setChosenDiscipline', _.pick(turmaInicial.disciplinas[0], ['codigo', 'nome']));
   },
 
-  methods: {
-    getUserMatriculaFromTurma(turmaId) {
-      return this.aluno.turmas.find(({ turma }) => turma.codigoTurma === turmaId).codigoMatricula
+  watch: {
+    chosenClassWatcher (newValue) {
+      this.$store.commit('setChosenClass', newValue)
     },
 
     setTurma(newValue) {
@@ -136,20 +128,6 @@ export default {
     listOfDisciplines () {
       return this.$store.getters.getTurma(this.$store.state.chosenClass.codigoTurma).disciplinas
     },
-
-    async chartData() {
-      const dataChart = []
-      const userDisciplineGrades = await getUserGrades(this.chosenMatricula, this.smartChosenDiscipline.codigo)
-      const disciplina = userDisciplineGrades.disciplinas[0]
-      disciplina.etapas.forEach(etapa => {
-        if (this.tipoGrafico.slug === 'media') {
-            etapa[this.tipoGrafico.slug] = etapa[this.tipoGrafico.slug].replace(',', '.')
-        }
-        dataChart.push([etapa.nomeEtapa, etapa[this.tipoGrafico.slug]])
-      })
-      return dataChart
-    }
-
   },
 };
 </script>
