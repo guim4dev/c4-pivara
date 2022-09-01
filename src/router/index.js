@@ -18,8 +18,8 @@ const routes = [
     component: ViewTurmas,
   },
   {
-    path: "/turma/:turma_id",
-    name: "Turma",
+    path: "/turmas/:id",
+    name: "TurmasDetail",
     component: ViewTurmaDetail,
     meta: {
       hideNavbar: true,
@@ -32,7 +32,7 @@ const routes = [
     component: ViewAlunos,
   },
   {
-    path: "/alunos/:aluno_id",
+    path: "/alunos/:id",
     name: "AlunosDetail",
     component: ViewAlunoDetail,
     meta: {

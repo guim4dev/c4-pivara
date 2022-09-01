@@ -2,11 +2,11 @@
   <base-card id="vertical">
     <div class="card-wrapper">
       <div class="card-content">
-        <h6 class="level">{{ turma.level }}</h6>
-        <h3 class="name">{{ turma.name }}</h3>
-        <el-tag class="custom-el-tag" type="warning">{{ turma.turno }}</el-tag>
+        <h6 class="level">{{ turma.curso.tipoCurso }}</h6>
+        <h3 class="name">{{ turma.nomeTurma }}</h3>
+        <el-tag class="custom-el-tag" type="warning">{{ turma.turnos.descricao }}</el-tag>
       </div>
-      <span style="color: #A3B1BF">2022</span>
+      <span style="color: #A3B1BF">{{ turma.periodoLetivo.descricao }}</span>
     </div>
   </base-card>
 </template>
