@@ -1,8 +1,8 @@
 <template>
     <div id="main">
         <img src="/img/logo.svg"/>
-        <p>Olá, Gabriela</p>
-        <h1>Bem-vinda ao Painel do professor personalizado, aqui você pode checar a saúde escolar das suas turmas e acompanhar o desenvolvimento dos seus alunos.</h1>
+        <p>Olá, Professor!</p>
+        <h1>Bem-vindo ao Painel do professor personalizado, aqui você pode checar a saúde escolar das suas turmas e acompanhar o desenvolvimento dos seus alunos.</h1>
     </div>
 </template>
 

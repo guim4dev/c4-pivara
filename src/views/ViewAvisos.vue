@@ -12,8 +12,7 @@ export default {
   components:{
     AvisoCard
   },
-  data() {
-    console.log(this.$store.state.data.avisos)
+  data(){
     return {
       avisoData: this.$store.state.data.avisos,
     }
