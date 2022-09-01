@@ -12,8 +12,12 @@ export default {
     name:"ViewHome",
     mounted(){
         setTimeout(()=>{
-            this.$router.push("/avisos")
-        },2000)
+            let route = '/avisos'
+            if (!this.$store.avisos || this.$store.avisos.length === 0) {
+                route = '/turmas'
+            }
+            this.$router.push(route)
+        },5000)
     },
     async created(){
         this.$store.commit('setup')
