@@ -3,20 +3,20 @@
     <AlunoDescription
       :aluno="aluno"
     />
-    <el-select v-model="chosenClassWatcher" class="m-2" placeholder="Select" size="large">
+    <el-select @change="setChosenClass" class="m-2" placeholder="Select" size="large">
       <el-option
-        v-for="turma in aluno.turmas"
-        :key="turma.id"
+        v-for="{ codigoMatricula, turma } in aluno.turmas"
+        :key="turma.codigoTurma"
         :label="turma.nome"
-        :value="{id: turma.id, nome: turma.nome}"
+        :value="{ id: turma.codigoTurma, nome: turma.nome, codigoMatricula: codigoMatricula }"
       />
     </el-select>
-    <el-select v-model="chosenDisciplineWatcher" class="m-2" placeholder="this.$store.chosenDiscipline.nome" size="large">
+    <el-select @change="setChosenDiscipline" class="m-2" placeholder="Select" size="large">
       <el-option
-        v-for="disciplina in listOfDisicplines"
-        :key="disciplina.id"
+        v-for="disciplina in listOfDisciplines"
+        :key="disciplina.codigo"
         :label="disciplina.nome"
-        :value="{id: disciplina.id, nome: disciplina.nome}"
+        :value="{ codigo: disciplina.codigo, nome: disciplina.nome }"
       />
     </el-select>
   </div>
@@ -24,6 +24,7 @@
 
 <script>
 import AlunoDescription from "@/components/AlunoDescription.vue";
+import _ from 'lodash'
 
 export default {
   name: "ViewAlunoDetail",
@@ -34,41 +35,39 @@ export default {
 
   data() {
     return {
-      aluno: this.$store.getters.getStudentInfo(parseInt(this.$route.params.id)),
+      aluno: this.$store.getters.getStudent(parseInt(this.$route.params.id)),
     }
   },
 
   created() {
-    console.log('oieee')
-    console.log(this.aluno)
-    console.log(this.aluno.turmas)
-    const turma = this.aluno.turmas[0]
-    console.log('turma', turma)
-    console.log('turma.id', turma.id)
-    this.$store.commit('setChosenClass', turma)
-    this.$store.commit('setChosenDiscipline', turma.disciplinas[0]);
+    const turmaInicial = this.aluno.turmas[0].turma
+    this.$store.commit('setChosenClass', _.pick(turmaInicial, ['codigoTurma', 'nome']));
+    this.$store.commit('setChosenDiscipline', _.pick(turmaInicial.disciplinas[0], ['codigo', 'nome']));
   },
 
-  watch: {
-    chosenClassWatcher (newValue) {
-      this.$store.commit('setChosenClass', newValue)
+  methods: {
+    setTurma(newValue) {
+      this.$store.commit('setChosenClass', newValue);
+      const turma = this.$store.getters.getTurma(newValue.codigoTurma);
+      this.$store.commit('setChosenDiscipline', _.pick(turma.disciplinas[0], ['codigo', 'nome']));
     },
-    chosenDisciplineWatcher (newValue) {
-      this.$store.commit('setChosenDiscipline', newValue)
+
+    setDiscipline(newValue) {
+      this.$store.commit('setChosenDiscipline', newValue);
     },
   },
 
   computed: {
     smartChosenDiscipline () {
-      return this.$store.chosenDisicpline
+      return this.$store.state.chosenDiscipline
     },
 
     smartChosenClass () {
-      return this.$store.chosenClass
+      return this.$store.state.chosenClass
     },
 
-    listOfDisicplines () {
-      return this.aluno.turmas.find(turma => turma.id === this.$store.chosenClass.id).disciplinas
+    listOfDisciplines () {
+      return this.$store.getters.getTurma(this.$store.state.chosenClass.codigoTurma).disciplinas
     },
   },
 };

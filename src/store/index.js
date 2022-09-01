@@ -353,9 +353,9 @@ const store = createStore({
         })
       })
 
-      console.log(students)
       return students
     },
+
     getAvisosByTurma:(state)=>(turmaId)=>{
       const avisos = []
       state.data.avisos.forEach(aviso=>{
@@ -365,24 +365,43 @@ const store = createStore({
       })
       return avisos
     },
+
+    getStudent: (state) => (id) => {
+      let student = null
+      state.data.turmas.forEach((turma) => {
+        const foundAluno = turma.alunos.find((aluno) => aluno.codigoAluno === id)
+        if (!foundAluno) {
+          return
+        }
+
+        if (!student) {
+          student = {
+            ...foundAluno,
+            turmas: [{ turma: turma , codigoMatricula: foundAluno.codigoMatricula }]
+          }
+          return
+        }
+        student.turmas.push({ turma: turma , codigoMatricula: foundAluno.codigoMatricula }) 
+      })
+
+      return student
+    },
+  
     getTurma: (state) => (turmaId) => {
       return state.data.turmas.find(turma => turma.codigoTurma === turmaId)
     },
 
     getDisciplinaFromTurma: (state) => (turmaId, disciplinaId) => {
-      console.log('coco')
-      console.log(turmaId, disciplinaId)
       return state.data.turmas.find(turma => turma.codigoTurma === turmaId).disciplinas.find(disciplina => disciplina.codigo === disciplinaId)
     }, 
 
     getAvisosNum:(state)=>()=>{
-      var num = 0
+      let num = 0
       state.data.avisos.forEach(aviso=>{
         if(aviso.situacao=="Pendente"){
           num++
         }
       })
-      console.log(num)
       return num
     },
   },
