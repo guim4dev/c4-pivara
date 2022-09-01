@@ -1,6 +1,6 @@
 <template>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <base-card :id="[isVertical?'vertical':'horizontal']">
+    <base-card :id="[isVertical?'vertical':'horizontal']" @click="this.$router.push(this.location)">
         <section id="top">
             <el-tag :type="this.statusTag.type">
                 <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">{{ this.statusTag.icon }}</span>
@@ -66,7 +66,8 @@ export default {
         description:String,
         date:Number,
         status:String,
-        tags:String
+        tags:String,
+        location:String
     },
     mounted(){
         switch(this.status){

@@ -1,6 +1,6 @@
 <template>
     <div class="horizontal-scroll">
-        <aviso-card v-for="aviso in data" :key="data.indexOf(aviso,data)" :isVertical="false" :text="aviso.titulo" :descricao="aviso.descricao" :status="aviso.situacao" :tags="aviso.tags"/>
+        <aviso-card v-for="aviso in data" :key="data.indexOf(aviso,data)" :date="aviso.dataCriacao" :isVertical="false" :text="aviso.titulo" :descricao="aviso.descricao" :status="aviso.situacao" :tags="aviso.entidade.descricao" :location="aviso.location"/>
     </div>
 </template>
 <script>

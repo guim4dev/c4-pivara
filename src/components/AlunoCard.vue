@@ -1,5 +1,5 @@
 <template>
-  <base-card id="vertical">
+  <base-card id="vertical" @click="this.$router.push(this.location)">
     <AlunoDescription :aluno="aluno"/>
   </base-card>
 </template>
@@ -24,6 +24,9 @@ export default {
   props: {
     aluno: {
       type: Object,
+    },
+    location:{
+      type: String
     }
   },
 }

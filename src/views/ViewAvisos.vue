@@ -1,6 +1,6 @@
 <template>
   <div class="avisos-wrapper">
-    <aviso-card v-for="aviso in avisoData" :key="aviso.entidade.codigoEntidade" :cod="aviso.entidade.codigoEntidade" :isVertical="true" :text="aviso.titulo" :description="aviso.descricao" :date="aviso.dataCriacao" :status="aviso.situacao" :tags="aviso.entidade.descricaoEntidade" :location="getAvisoLocation(aviso)" />
+    <aviso-card v-for="aviso in avisoData" :key="aviso.entidade.codigo" :cod="aviso.entidade.codigo" :isVertical="true" :text="aviso.titulo" :date="aviso.dataCriacao" :status="aviso.situacao" :tags="aviso.entidade.descricao" :location="aviso.location" />
   </div>
 </template>
 <script>
@@ -17,7 +17,11 @@ export default {
       avisoData: this.$store.state.data.avisos,
     }
   },
-
+  mounted(){
+    this.avisoData.forEach(aviso => {
+      aviso.location = `/${this.getEntidadeRoute(aviso.entidade.descricao)}/${aviso.entidade.codigo}`
+    });
+  },
   methods: {
     getEntidadeRoute(tipoEntidade) {
       const mapping = {
@@ -26,10 +30,6 @@ export default {
       }
 
       return mapping[tipoEntidade]
-    },
-
-    getAvisoLocation(aviso) {
-      return `/${this.getEntidadeRoute(aviso.entidade.tipoEntidade)}/${aviso.entidade.codigoEntidade}`
     }
   }
 }

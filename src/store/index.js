@@ -45,7 +45,7 @@ const store = createStore({
     getAvisosByTurma:(state)=>(turmaId)=>{
       const avisos = []
       state.data.avisos.forEach(aviso=>{
-        if(aviso.entidade.descricaoEntidade=="Turma" && aviso.entidade.codigoEntidade==turmaId){
+        if(aviso.entidade.descricao=="Turma" && aviso.entidade.codigo==turmaId){
           avisos.push(aviso)
         }
       })
@@ -55,7 +55,7 @@ const store = createStore({
     getAvisosByStudent:(state)=>(alunoId)=>{
       const avisos = []
       state.data.avisos.forEach(aviso=>{
-        if(aviso.entidade.descricaoEntidade=="Aluno" && aviso.entidade.codigoEntidade==alunoId){
+        if(aviso.entidade.descricao=="Aluno" && aviso.entidade.codigo==alunoId){
           avisos.push(aviso)
         }
       })

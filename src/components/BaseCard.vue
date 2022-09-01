@@ -1,5 +1,5 @@
 <template>
-  <div class="card" @click="this.$router.push(this.location)">
+  <div class="card">
     <slot></slot>
   </div>
 </template>

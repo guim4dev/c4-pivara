@@ -1,5 +1,5 @@
 <template>
-  <base-card id="vertical">
+  <base-card id="vertical" @click="this.$router.push(this.location)">
     <div class="card-wrapper">
       <div class="card-content">
         <h6 class="level">{{ turma.curso.tipoCurso }}</h6>
@@ -64,6 +64,9 @@ export default {
   props: {
     turma: {
       type: Object,
+    },
+    location:{
+      type:String
     }
   },
 }
