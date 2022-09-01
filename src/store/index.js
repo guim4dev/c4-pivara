@@ -37,7 +37,7 @@ const store = createStore({
               {
                 "codigo": 34,
                 "codigoSetor": null,
-                "nome": "Validacao (normal)",
+                "nome": "Matemática",
                 "etapas": [
                   {
                     "numeroEtapa": 1,
@@ -55,7 +55,7 @@ const store = createStore({
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
                     "falta": "9,0000",
-                    "media": "9,0000",
+                    "media": "7,5000",
                   },
                   {
                     "numeroEtapa": 3,
@@ -103,7 +103,78 @@ const store = createStore({
                     "media": "9,0000",
                   }
                 ]
+              },
+              {
+                "codigo": 35,
+                "codigoSetor": null,
+                "nome": "Física",
+                "etapas": [
+                  {
+                    "numeroEtapa": 1,
+                    "nomeEtapa": "1 BIMESTRE",
+                    "peso": 1,
+                    "tipoEtapa": 1,
+                    "codigoTurma": 0,
+                    "falta": "2,5000",
+                    "media": "5,000",
+                  },
+                  {
+                    "numeroEtapa": 2,
+                    "nomeEtapa": "2 BIMESTRE",
+                    "peso": 1,
+                    "tipoEtapa": 1,
+                    "codigoTurma": 0,
+                    "falta": "0,000",
+                    "media": "7,5000",
+                  },
+                  {
+                    "numeroEtapa": 3,
+                    "nomeEtapa": "3 BIMESTRE",
+                    "peso": 1,
+                    "tipoEtapa": 1,
+                    "codigoTurma": 0,
+                    "falta": "9,000",
+                    "media": "5,000",
+                  },
+                  {
+                    "numeroEtapa": 4,
+                    "nomeEtapa": "4 BIMESTRE",
+                    "peso": 1,
+                    "tipoEtapa": 1,
+                    "codigoTurma": 0,
+                    "falta": "7,000",
+                    "media": "5,000",
+                  },
+                  {
+                    "numeroEtapa": 13,
+                    "nomeEtapa": "Fim das etapas",
+                    "peso": 1,
+                    "tipoEtapa": 2,
+                    "codigoTurma": 0,
+                    "falta": "2,000",
+                    "media": "5,000",
+                  },
+                  {
+                    "numeroEtapa": 14,
+                    "nomeEtapa": "Rec. Final",
+                    "peso": 1,
+                    "tipoEtapa": 4,
+                    "codigoTurma": 0,
+                    "falta": "3,000",
+                    "media": "5,000",
+                  },
+                  {
+                    "numeroEtapa": 16,
+                    "nomeEtapa": "Situação Final",
+                    "peso": 1,
+                    "tipoEtapa": 6,
+                    "codigoTurma": 0,
+                    "falta": "3,000",
+                    "media": "5,000",
+                  }
+                ]
               }
+
             ],
             "alunos": [
               {
@@ -234,11 +305,11 @@ const store = createStore({
         ]
       },
       chosenDiscipline: {
-        id: null,
+        codigo: null,
         nome: null,
       },
       chosenClass: {
-        id: null,
+        codigoTurma: null,
         nome: null,
       }
     }
@@ -263,17 +334,26 @@ const store = createStore({
 
       console.log(students)
       return students
-    }
+    },
+
+    getTurma: (state) => (turmaId) => {
+      return state.data.turmas.find(turma => turma.codigoTurma === turmaId)
+    },
+
+    getDisciplinaFromTurma: (state) => (turmaId, disciplinaId) => {
+      console.log('coco')
+      console.log(turmaId, disciplinaId)
+      return state.data.turmas.find(turma => turma.codigoTurma === turmaId).disciplinas.find(disciplina => disciplina.codigo === disciplinaId)
+    }, 
   },
   
   mutations: {
     setChosenDiscipline (state, discipline) {
-      state.chosenDiscipline = discipline
+      state.chosenDiscipline = _.pick(discipline, ['codigo', 'nome'])
     },
 
     setChosenClass (state, klass) {
-      state.chosenClass = klass
-      state.chosenDiscipline = _.pick(state.data.turmas.find(turma => turma.id === klass.id).disciplinas[0], ['id', 'nome'])
+      state.chosenClass = _.pick(klass, ['codigoTurma', 'nome'])
     }
   }
 })
