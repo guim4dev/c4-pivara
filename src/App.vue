@@ -14,7 +14,6 @@ export default {
     NavigationHeader,
     GoBackHeader
   },
-
   computed: {
     shouldShowNavbar() {
       return !this.$route.meta.hideNavbar
