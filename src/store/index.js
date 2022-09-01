@@ -18,7 +18,7 @@ const store = createStore({
             "titulo": "Aviso de Turma",
             "descricao": "Descrição do aviso",
             "situacao": "Pendente",
-            "dataCriacao":29/8/2022,
+            "dataCriacao": "2022-01-01T00:00:00.000Z",
             "entidade": {
               "codigoEntidade": 27,
               "descricaoEntidade": "Turma",
@@ -28,7 +28,7 @@ const store = createStore({
             "titulo": "Aviso de Aluno",
             "descricao": "Descrição do aviso",
             "situacao": "Pendente",
-            "dataCriacao":29/8/2022,
+            "dataCriacao":"2022-01-01T00:00:00.000Z",
             "entidade": {
               "codigoEntidade": 66,
               "descricaoEntidade": "Aluno",
