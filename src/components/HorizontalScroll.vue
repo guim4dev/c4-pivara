@@ -13,9 +13,6 @@ export default {
     },
     props:{
         data:Array
-    },
-    created(){
-        console.log('data do Horizontal', this.data)
     }
 }
 </script>

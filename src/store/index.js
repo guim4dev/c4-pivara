@@ -120,7 +120,6 @@ const store = createStore({
     async setup(state){
       state.token = await autenticacaoService()
       state.data.turmas = await turmaService()
-      console.log(state.data.turmas)
       state.data.avisos = await avisoService()
     }
   }

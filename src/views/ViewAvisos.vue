@@ -29,7 +29,6 @@ export default {
     },
 
     getAvisoLocation(aviso) {
-      console.log(aviso)
       return `/${this.getEntidadeRoute(aviso.entidade.tipoEntidade)}/${aviso.entidade.codigoEntidade}`
     }
   }

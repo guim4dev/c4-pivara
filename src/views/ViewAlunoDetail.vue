@@ -104,17 +104,12 @@ export default {
 
   async created() {
     const turmaInicial = this.aluno.turmas[0].turma
-    console.log(turmaInicial)
     this.$store.commit('setChosenClass', _.pick(turmaInicial, ['codigoTurma', 'nomeTurma']));
     this.$store.commit('setChosenDiscipline', _.pick(turmaInicial.disciplinas[0], ['codigo', 'nome']));
     await this.refreshChartData()
   },
 
-  watch: {
-    chosenClassWatcher (newValue) {
-      this.$store.commit('setChosenClass', newValue)
-    },
-
+  methods: {
     async setTurma(newValue) {
       this.chosenMatricula = newValue.codigoMatricula
       const turma = this.$store.getters.getTurma(newValue.codigoTurma);
@@ -135,7 +130,6 @@ export default {
 
     getChartData () {
       const dataForChart = []
-      console.log(this.fullData)
       this.fullData.forEach(etapa => {
         if (!etapa[this.tipoGrafico.slug]) {
           return
