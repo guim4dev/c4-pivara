@@ -19,8 +19,7 @@ const store = createStore({
         codigoTurma: null,
         nomeTurma: null,
       },        
-      token:null,
-      professorId:51,
+      token: null
     }
   },
   getters: {
