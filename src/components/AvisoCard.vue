@@ -6,12 +6,12 @@
                 <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">{{ this.statusTag.icon }}</span>
                 {{ this.statusTag.text }}
             </el-tag>
-            <span id="date">{{ difDate }}</span>
+            <span id="date">{{ difDate }} dias atrás</span>
         </section>
         <section id="content">
             <!--<span class="material-symbols-outlined" style="font-size:22px;margin-bottom:0">error</span>-->
             <img style="font-size:22px;margin-right:10px;margin-bottom:3px;" :src="'/img/warning.svg'"/>
-            <h3>{{ "#" +cod+ "&nbsp;" }}</h3><h3>{{ text }}</h3>
+            <h3>{{ text }}</h3>
         </section>
         <section id="description">
             <h6>{{ description }}</h6>
@@ -37,7 +37,21 @@ export default {
     data(){
         const currentDate = Date.now();
         const oldDate = Date.parse(this.date);
-        const difDate = currentDate - oldDate;
+
+        function calculateDataDiff(){
+            let start = oldDate
+            let end = currentDate
+
+            start = new Date(start)
+            end = new Date(end)
+            
+            let diffInTime = Math.abs(end - start)
+            let timeInOneDay = 1000 * 60 * 60 *24
+            let difDate = Math.ceil(diffInTime / timeInOneDay)
+
+            return difDate
+        }
+        const difDate = calculateDataDiff()
         
         return{
             statusTag:{},
