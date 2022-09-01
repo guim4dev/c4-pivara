@@ -21,10 +21,6 @@ export default {
     AlunoDescription
   },
 
-  created() {
-    console.log('oieeee')
-  },
-
   props: {
     aluno: {
       type: Object,

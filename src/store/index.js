@@ -367,6 +367,16 @@ const store = createStore({
       return avisos
     },
 
+    getAvisosByStudent:(state)=>(alunoId)=>{
+      const avisos = []
+      state.data.avisos.forEach(aviso=>{
+        if(aviso.entidade.descricaoEntidade=="Aluno" && aviso.entidade.codigoEntidade==alunoId){
+          avisos.push(aviso)
+        }
+      })
+      return avisos
+    },
+
     getStudent: (state) => (id) => {
       let student = null
       state.data.turmas.forEach((turma) => {
