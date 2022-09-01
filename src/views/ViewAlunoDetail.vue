@@ -1,6 +1,6 @@
 <template>
   <div style="padding: 20px; position: sticky; top: 56px; background-color: white;">
-    <AlunoDescription
+    <AlunoDescription 
       :aluno="{ ra: '212', name: 'João Pedro' }"
     />
   </div>
