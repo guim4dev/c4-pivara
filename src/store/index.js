@@ -94,7 +94,7 @@ const store = createStore({
     getAvisosNum:(state)=>()=>{
       let num = 0
       state.data.avisos.forEach(aviso=>{
-        if(aviso.situacao=="Pendente"){
+        if(aviso.situacao==="Pendente"){
           num++
         }
       })

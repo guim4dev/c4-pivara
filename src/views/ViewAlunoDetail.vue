@@ -35,7 +35,11 @@
           />
         </el-select>
       </div>
-      <MyChart :dataChart="chartData" :suffix="tipoGrafico.suffix"/>
+      <MyChart
+        :dataChart="[
+          { name: aluno.nome, data: chartData },
+          { name: smartChosenClass.nomeTurma, data: turmaChartData}
+        ]" :suffix="tipoGrafico.suffix" />
     </section>
   </div>
 </template>
@@ -98,7 +102,8 @@ export default {
       chosenMatricula: aluno.turmas[0].codigoMatricula,
       tipoGrafico: { slug: 'media', nome: 'Média', suffix: '' },
       fullData: [],
-      chartData: []
+      chartData: [],
+      classChartData: [],
     }
   },
 
@@ -163,6 +168,27 @@ export default {
 
     listOfDisciplines () {
       return this.$store.getters.getTurma(this.$store.state.chosenClass.codigoTurma).disciplinas
+    },
+
+    currentTurmaDisciplina() {
+      return this.$store.getters.getDisciplinaFromTurma(this.$store.state.chosenClass.codigoTurma, this.$store.state.chosenDiscipline.codigo)
+    },
+
+    turmaChartData() {
+      const finalData = []
+      this.currentTurmaDisciplina.etapas.forEach(etapa => {
+        if (!etapa[this.tipoGrafico.slug]) {
+          return
+        }
+ 
+        if (this.tipoGrafico.slug === 'media') {
+          etapa.media = etapa.media.replace(',', '.')
+        }
+
+        finalData.push([etapa.nomeEtapa, etapa[this.tipoGrafico.slug] || '0.0'])
+      })
+
+      return finalData
     }
   },
 };

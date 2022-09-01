@@ -4,7 +4,6 @@ export default async (matricula, disciplina) => {
   try {
     const resp = await http.get(`SophiAWebAPI/api/v1/alunos/Matriculas/${matricula}/Boletim?CodigoDisciplina=${disciplina}`);
     return resp.data;
-
   } catch (err) {
     console.log(err);
     return {};
