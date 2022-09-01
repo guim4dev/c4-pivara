@@ -12,6 +12,28 @@ const store = createStore({
   state () {
     return {
       data: {
+        avisos: [
+          {
+            "titulo": "Aviso de Turma",
+            "descricao": "Descrição do aviso",
+            "situacao": "Pendente",
+            "dataCriacao": "2022-01-01T00:00:00.000Z",
+            "entidade": {
+              "codigoEntidade": 27,
+              "descricaoEntidade": "Turma",
+            } 
+          },
+          {
+            "titulo": "Aviso de Aluno",
+            "descricao": "Descrição do aviso",
+            "situacao": "Pendente",
+            "dataCriacao": "2022-01-01T00:00:00.000Z",
+            "entidade": {
+              "codigoEntidade": 66,
+              "descricaoEntidade": "Aluno",
+            } 
+          },
+        ],
         turmas: [
           {
             "codigoTurma": 27,
