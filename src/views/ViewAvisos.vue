@@ -1,6 +1,6 @@
 <template>
   <div class="avisos-wrapper">
-    <aviso-card v-for="aviso in avisoData" :key="aviso.id" :isVertical="true" :text="aviso.text" :date="aviso.data" :status="aviso.status" :tags="aviso.tags"/>
+    <aviso-card v-for="aviso in avisoData" :key="aviso.entidade.codigoEntidade" :cod="aviso.entidade.codigoEntidade" :isVertical="true" :text="aviso.titulo" :description="aviso.descricao" :date="aviso.dataCriacao" :status="aviso.situacao" :tags="aviso.entidade.descricaoEntidade"/>
   </div>
 </template>
 <script>
@@ -12,6 +12,7 @@ export default {
   components:{
     AvisoCard
   },
+
   data(){
     return {
       avisoData: this.$store.state.data.avisos,

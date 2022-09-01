@@ -23,7 +23,7 @@ export default {
         {
           default: 'bell.svg',
           active: false,
-          itemName: "Avisos",
+          itemName: "Alertas",
           link: "/avisos"
         },
         {

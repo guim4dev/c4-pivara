@@ -6,19 +6,20 @@
                 <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">{{ this.statusTag.icon }}</span>
                 {{ this.statusTag.text }}
             </el-tag>
-            <span id="date">{{ date }}</span>
+            <span id="date">{{ difDate }}</span>
         </section>
         <section id="content">
-            <span class="material-symbols-outlined" style="font-size:22px;margin-bottom:0">error</span>
-            <div style="display:flex;flex-direction:column;align-items: baseline;">
-                <h3>{{ text }}</h3>
-                <p style="font-size:12px">{{descricao}}</p>
-            </div>
+            <!--<span class="material-symbols-outlined" style="font-size:22px;margin-bottom:0">error</span>-->
+            <img style="font-size:22px;margin-right:10px;margin-bottom:3px;" :src="'/img/warning.svg'"/>
+            <h3>{{ "#" +cod+ "&nbsp;" }}</h3><h3>{{ text }}</h3>
+        </section>
+        <section id="description">
+            <h6>{{ description }}</h6>
         </section>
         <section id="tags">
-            <el-tag :type="tag.type" v-for="tag in tags" :key="tags.indexOf(tag,tags)">
-                <span class="material-symbols-outlined" style="font-size:14px;margin-bottom:0">{{tag.icon}}</span>
-                {{ tag.text }}
+            <el-tag :type="this.entidadeTag.type">
+                <span class="material-symbols-outlined" style="font-size:14px;">{{ this.entidadeTag.icon }}</span>
+                {{ this.entidadeTag.text }}
             </el-tag>
         </section>
     </base-card>
@@ -26,6 +27,7 @@
 <script>
 import BaseCard from '@/components/BaseCard.vue'
 import {ElTag} from 'element-plus'
+
 export default {
     name:"AvisoCard",
     components:{
@@ -33,17 +35,24 @@ export default {
         ElTag
     },
     data(){
+        const currentDate = Date.now();
+        const oldDate = Date.parse(this.date);
+        const difDate = currentDate - oldDate;
+        
         return{
             statusTag:{},
+            entidadeTag:{},
+            difDate: difDate,
         }
     },
     props:{
         isVertical:Boolean,
         text:String,
-        date:String,
+        cod:Int32Array,
+        description:String,
+        date:Number,
         status:String,
-        tags:Array,
-        descricao:String
+        tags:String
     },
     mounted(){
         switch(this.status){
@@ -53,17 +62,33 @@ export default {
             case 'Pendente':
                 this.statusTag = {text:this.status,type:'warning',icon:'error'}
         }
+        switch(this.tags){
+            case 'Turma':
+                this.entidadeTag = {text:this.tags}
+                break;
+            case 'Aluno':
+                this.entidadeTag = {text:this.tags}
+        }
     }
 }
 </script>
 <style scoped>
     #content{
-        margin: 25px 0;
+        margin: 20px 0px 10px 0px;
         display: flex;
         align-content: center;
     }
     #content span{
         margin-right: 8px;
+    }
+    h6{
+        font-size: 14px;
+        font-weight: normal;
+    }
+    #description{
+        margin: 0px 0px 25px 30px;
+        display: flex;
+        align-content: center;
     }
     .el-tag{
         margin-right: 8px;
