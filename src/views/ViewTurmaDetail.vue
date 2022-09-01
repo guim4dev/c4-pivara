@@ -8,7 +8,7 @@
         </section>
         <section id="chart">
             <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 16px 16px;z-index:0;padding:0 10%">
-                <el-select @change="setDisciplina" class="m-2" :placeholder="currentDisciplina.nome" size="large">
+                <el-select @change="setDisciplina" class="m-2" :placeholder="currentDisciplina.nome" size="default">
                     <el-option
                     v-for="disciplina in this.turma.disciplinas"
                     :key="disciplina.codigo"
@@ -16,7 +16,7 @@
                     :value="{ codigo: disciplina.codigo, nome: disciplina.nome }"
                     />
                 </el-select>
-                <el-select @change="setTipoGrafico" class="m-2" :placeholder="tipoGrafico.nome" size="large">
+                <el-select @change="setTipoGrafico" class="m-2" :placeholder="tipoGrafico.nome" size="default">
                     <el-option
                     v-for="tipo in [{ slug: 'media', nome: 'Média', suffix: '' }, { slug: 'percentualFalta', nome: 'Percentual de Falta', suffix: '%' }]"
                     :key="tipo.slug"
@@ -24,7 +24,6 @@
                     :value="tipo"
                     />
                 </el-select>
-                
             </div>
             <MyChart :dataChart="chartData" :suffix="tipoGrafico.suffix"/>
         </section>

@@ -1,16 +1,8 @@
 import { createStore } from 'vuex'
-// import VuexPersistence from 'vuex-persistedstate'
 import _ from 'lodash'
 import autenticacaoService from '@/services/Autenticacao/autenticacaoService'
 import turmaService from '@/services/Turma/turmaService'
 import avisoService from '@/services/Aviso/avisoService'
-
-// const vuexPersistence = new VuexPersistence({
-//   key: 'vuex',
-//   storage: window.sessionStorage
-// })
-
-// Create a new store instance.
 
 const store = createStore({
   state () {
@@ -25,7 +17,7 @@ const store = createStore({
       },
       chosenClass: {
         codigoTurma: null,
-        nome: null,
+        nomeTurma: null,
       },        
       token:null,
       professorId:51,
@@ -123,7 +115,7 @@ const store = createStore({
     },
 
     setChosenClass (state, klass) {
-      state.chosenClass = _.pick(klass, ['codigoTurma', 'nome'])
+      state.chosenClass = _.pick(klass, ['codigoTurma', 'nomeTurma'])
     },
 
     async setup(state){

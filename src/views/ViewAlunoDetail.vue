@@ -10,23 +10,32 @@
     </section>
     <section id="chart">
       <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 16px 16px;z-index:0;padding:0 10%">
-        <el-select @change="setChosenClass" class="m-2" placeholder="Select" size="large">
+        <el-select @change="setTurma" class="m-2" :placeholder="smartChosenClass.nomeTurma" size="small">
           <el-option
-                v-for="{ codigoMatricula, turma } in aluno.turmas"
-                :key="turma.codigoTurma"
-            :label="turma.nome"
-                :value="{ id: turma.codigoTurma, nome: turma.nome, codigoMatricula: codigoMatricula }"
+            v-for="turma in aluno.turmas"
+            :key="turma.turma.codigoTurma"
+            :label="turma.turma.nomeTurma"
+            :value="{ codigoTurma: turma.turma.codigoTurma, nomeTurma: turma.turma.nomeTurma, codigoMatricula: turma.codigoMatricula }"
           />
         </el-select>
-    <el-select v-model="chosenDisciplineWatcher" class="m-2" placeholder="this.$store.chosenDiscipline.nome" size="large">
-      <el-option
+        <el-select @change="setDiscipline" class="m-2" :placeholder="smartChosenDiscipline.nome" size="small">
+          <el-option
             v-for="disciplina in listOfDisciplines"
             :key="disciplina.codigo"
-        :label="disciplina.nome"
-        :value="{id: disciplina.id, nome: disciplina.nome}"
-      />
-    </el-select>
-  </div>
+            :label="disciplina.nome"
+            :value="{ codigo: disciplina.codigo, nome: disciplina.nome }"
+          />
+        </el-select>
+        <el-select @change="setTipoGrafico" class="m-2" :placeholder="tipoGrafico.nome" size="small">
+          <el-option
+            v-for="tipo in [{ slug: 'media', nome: 'Média', suffix: '' }, { slug: 'falta', nome: 'Faltas', suffix: '' }]"
+            :key="tipo.slug"
+            :label="tipo.nome"
+            :value="tipo"
+          />
+        </el-select>
+      </div>
+      <MyChart :dataChart="chartData" :suffix="tipoGrafico.suffix"/>
     </section>
   </div>
 </template>
@@ -66,7 +75,8 @@
 <script>
 import AlunoDescription from "@/components/AlunoDescription.vue";
 import HorizontalScroll from '@/components/HorizontalScroll.vue'
-// import MyChart from '@/components/MyChart.vue'
+import notasDisciplina from '@/services/Alunos/notasDisciplina.js'
+import MyChart from '@/components/MyChart.vue'
 import _ from 'lodash'
 
 export default {
@@ -75,24 +85,29 @@ export default {
   components: {
     AlunoDescription,
     HorizontalScroll,
-    // MyChart
+    MyChart
   },
 
   data() {
     const alunoId = parseInt(this.$route.params.id)
     const aluno = this.$store.getters.getStudent(alunoId)
+
     return {
       aluno,
       avisos: this.$store.getters.getAvisosByStudent(alunoId),
       chosenMatricula: aluno.turmas[0].codigoMatricula,
-      tipoGrafico: { slug: 'media', nome: 'Média', suffix: '' }
+      tipoGrafico: { slug: 'media', nome: 'Média', suffix: '' },
+      fullData: [],
+      chartData: []
     }
   },
 
-  created() {
+  async created() {
     const turmaInicial = this.aluno.turmas[0].turma
-    this.$store.commit('setChosenClass', _.pick(turmaInicial, ['codigoTurma', 'nome']));
+    console.log(turmaInicial)
+    this.$store.commit('setChosenClass', _.pick(turmaInicial, ['codigoTurma', 'nomeTurma']));
     this.$store.commit('setChosenDiscipline', _.pick(turmaInicial.disciplinas[0], ['codigo', 'nome']));
+    await this.refreshChartData()
   },
 
   watch: {
@@ -100,19 +115,46 @@ export default {
       this.$store.commit('setChosenClass', newValue)
     },
 
-    setTurma(newValue) {
+    async setTurma(newValue) {
       this.chosenMatricula = newValue.codigoMatricula
       const turma = this.$store.getters.getTurma(newValue.codigoTurma);
       this.$store.commit('setChosenClass', newValue);
       this.$store.commit('setChosenDiscipline', _.pick(turma.disciplinas[0], ['codigo', 'nome']));
+      await this.refreshChartData()
     },
 
-    setDiscipline(newValue) {
+    async setDiscipline(newValue) {
       this.$store.commit('setChosenDiscipline', newValue);
+      await this.refreshChartData()
     },
 
     setTipoGrafico (newValue) {
       this.tipoGrafico = newValue
+      this.chartData = this.getChartData()
+    },
+
+    getChartData () {
+      const dataForChart = []
+      console.log(this.fullData)
+      this.fullData.forEach(etapa => {
+        if (!etapa[this.tipoGrafico.slug]) {
+          return
+        }
+ 
+        if (this.tipoGrafico.slug === 'media') {
+          etapa.media = etapa.media.replace(',', '.')
+        }
+
+        dataForChart.push([etapa.nomeEtapa, etapa[this.tipoGrafico.slug] || '0.0'])
+      })
+      return dataForChart
+    },
+
+    async refreshChartData() {
+      const userDisciplineGrades = await notasDisciplina(this.chosenMatricula, this.smartChosenDiscipline.codigo)
+      const disciplina = userDisciplineGrades.disciplinas[0]
+      this.fullData = disciplina.etapas
+      this.chartData = this.getChartData()
     }
   },
 
@@ -127,7 +169,7 @@ export default {
 
     listOfDisciplines () {
       return this.$store.getters.getTurma(this.$store.state.chosenClass.codigoTurma).disciplinas
-    },
+    }
   },
 };
 </script>
