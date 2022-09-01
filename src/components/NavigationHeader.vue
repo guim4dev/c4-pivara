@@ -3,7 +3,7 @@
 
   <div class="header-tracking">
     <div class="header-center">
-      <NavigationHeaderItem v-for = "icon in colorIcon" :key="colorIcon.indexOf(icon, colorIcon)" v-on:click="()=>{this.clearColorIcon();icon.active=true;}" :active="icon.active" :iconPath="icon.default" :itemName="icon.itemName" :link="icon.link"></NavigationHeaderItem>
+      <NavigationHeaderItem v-for = "icon in colorIcon" :key="colorIcon.indexOf(icon, colorIcon)" :avisos="this.num" v-on:click="()=>{this.clearColorIcon();icon.active=true;}" :active="icon.active" :iconPath="icon.default" :itemName="icon.itemName" :link="icon.link"></NavigationHeaderItem>
     </div>
   </div>
 </template> 
@@ -18,6 +18,7 @@ export default {
   },
   data(){
     return{
+      num:this.$store.getters.getAvisosNum(),
       colorIcon:[
         {
           default: 'bell.svg',

@@ -374,6 +374,17 @@ const store = createStore({
       console.log(turmaId, disciplinaId)
       return state.data.turmas.find(turma => turma.codigoTurma === turmaId).disciplinas.find(disciplina => disciplina.codigo === disciplinaId)
     }, 
+
+    getAvisosNum:(state)=>()=>{
+      var num = 0
+      state.data.avisos.forEach(aviso=>{
+        if(aviso.situacao=="Pendente"){
+          num++
+        }
+      })
+      console.log(num)
+      return num
+    },
   },
   
   mutations: {
