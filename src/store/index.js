@@ -356,9 +356,6 @@ const store = createStore({
       console.log(students)
       return students
     },
-
-<<<<<<< Updated upstream
-=======
     getAvisosByTurma:(state)=>(turmaId)=>{
       const avisos = []
       state.data.avisos.forEach(aviso=>{
@@ -368,8 +365,6 @@ const store = createStore({
       })
       return avisos
     },
-
->>>>>>> Stashed changes
     getTurma: (state) => (turmaId) => {
       return state.data.turmas.find(turma => turma.codigoTurma === turmaId)
     },
