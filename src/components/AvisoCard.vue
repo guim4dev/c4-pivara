@@ -13,9 +13,6 @@
             <img style="font-size:22px;margin-right:10px;margin-bottom:3px;" :src="'/img/warning.svg'"/>
             <h3>{{ text }}</h3>
         </section>
-        <section id="description">
-            <h6>{{ description }}</h6>
-        </section>
         <section id="tags">
             <el-tag :type="this.entidadeTag.type">
                 <span class="material-symbols-outlined" style="font-size:14px;">{{ this.entidadeTag.icon }}</span>

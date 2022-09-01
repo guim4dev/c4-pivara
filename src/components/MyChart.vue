@@ -1,6 +1,6 @@
 <template>
     <div class="chart-card">
-        <area-chart :data="dataChart" :suffix="suffix" :download="true"/>
+        <line-chart :data="dataChart" :suffix="suffix" :download="true"/>
     </div>
 </template>
 <script>

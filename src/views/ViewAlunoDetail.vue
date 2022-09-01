@@ -9,8 +9,8 @@
       <HorizontalScroll :data="this.avisos"/>
     </section>
     <section id="chart">
-      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 16px 16px;z-index:0;padding:0 10%">
-        <el-select @change="setTurma" class="m-2" :placeholder="smartChosenClass.nomeTurma" size="small">
+      <div style="display: flex; align-items: center; justify-content: center; margin: 16px 16px;z-index:0;padding:0 10%">
+        <el-select @change="setTurma" class="m-2" :placeholder="smartChosenClass.nomeTurma" style="margin-right: 8px" size="large">
           <el-option
             v-for="turma in aluno.turmas"
             :key="turma.turma.codigoTurma"
@@ -18,7 +18,7 @@
             :value="{ codigoTurma: turma.turma.codigoTurma, nomeTurma: turma.turma.nomeTurma, codigoMatricula: turma.codigoMatricula }"
           />
         </el-select>
-        <el-select @change="setDiscipline" class="m-2" :placeholder="smartChosenDiscipline.nome" size="small">
+        <el-select @change="setDiscipline" class="m-2" :placeholder="smartChosenDiscipline.nome" style="margin-right: 8px" size="large">
           <el-option
             v-for="disciplina in listOfDisciplines"
             :key="disciplina.codigo"
@@ -26,7 +26,7 @@
             :value="{ codigo: disciplina.codigo, nome: disciplina.nome }"
           />
         </el-select>
-        <el-select @change="setTipoGrafico" class="m-2" :placeholder="tipoGrafico.nome" size="small">
+        <el-select @change="setTipoGrafico" class="m-2" :placeholder="tipoGrafico.nome" size="large">
           <el-option
             v-for="tipo in [{ slug: 'media', nome: 'Média', suffix: '' }, { slug: 'falta', nome: 'Faltas', suffix: '' }]"
             :key="tipo.slug"
@@ -35,10 +35,11 @@
           />
         </el-select>
       </div>
+      <h2 style="text-align: left; margin-left: 32px">{{ tipoGrafico.nome }} em {{ smartChosenDiscipline.nome }}</h2>
       <MyChart
         :dataChart="[
-          { name: aluno.nome, data: chartData },
-          { name: smartChosenClass.nomeTurma, data: turmaChartData}
+          { name: aluno.nome, data: chartData, color: '#2F8AF5' },
+          { name: smartChosenClass.nomeTurma, data: turmaChartData, color: '#F97777' }
         ]" :suffix="tipoGrafico.suffix" />
     </section>
   </div>
@@ -73,6 +74,8 @@
       background-color: white;
       width: 100%;
       margin-bottom: 30px;
+      max-width: 1500px;
+      border-radius: 8px;
   }
 </style>
 
