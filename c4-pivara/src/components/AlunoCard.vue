@@ -13,6 +13,7 @@
 <script>
 import BaseCard from '@/components/BaseCard.vue'
 import AlunoDescription from '@/components/AlunoDescription.vue';
+import ViewAlunoDetail from '@/views/ViewAlunoDetail.vue';
 
 export default {
   name: 'AlunoCard',
