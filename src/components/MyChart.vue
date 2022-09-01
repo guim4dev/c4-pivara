@@ -1,6 +1,6 @@
 <template>
     <div class="chart-card">
-        <line-chart :data="dataChart" />
+        <line-chart :data="dataChart" :suffix="suffix" />
     </div>
 </template>
 <script>
@@ -11,6 +11,9 @@ export default {
         dataChart: {
             type: Array,
             required: true
+        },
+        suffix: {
+            type: String
         }
     },
 }

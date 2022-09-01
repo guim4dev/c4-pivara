@@ -45,8 +45,8 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
-                    "media": "9,0000",
+                    "percentualFalta": 0.5,
+                    "media": "9.5",                  
                   },
                   {
                     "numeroEtapa": 2,
@@ -54,7 +54,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "7,5000",
                   },
                   {
@@ -63,7 +63,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -72,8 +72,8 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
-                    "media": "9,0000",
+                    "percentualFalta": 9.0000,
+                    "media": "9,321",
                   },
                   {
                     "numeroEtapa": 13,
@@ -81,7 +81,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 2,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -90,7 +90,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 4,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -99,7 +99,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 6,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   }
                 ]
@@ -115,7 +115,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "2,5000",
+                    "percentualFalta": 2.5000,
                     "media": "5,000",
                   },
                   {
@@ -124,7 +124,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "0,000",
+                    "percentualFalta": 0.000,
                     "media": "7,5000",
                   },
                   {
@@ -133,7 +133,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,000",
+                    "percentualFalta": 9.000,
                     "media": "5,000",
                   },
                   {
@@ -142,7 +142,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "7,000",
+                    "percentualFalta": 7.000,
                     "media": "5,000",
                   },
                   {
@@ -151,7 +151,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 2,
                     "codigoTurma": 0,
-                    "falta": "2,000",
+                    "percentualFalta": 2.000,
                     "media": "5,000",
                   },
                   {
@@ -160,8 +160,8 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 4,
                     "codigoTurma": 0,
-                    "falta": "3,000",
-                    "media": "5,000",
+                    "percentualFalta": 3.000,
+                    "media": "5,312345",
                   },
                   {
                     "numeroEtapa": 16,
@@ -169,7 +169,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 6,
                     "codigoTurma": 0,
-                    "falta": "3,000",
+                    "percentualFalta": 3.000,
                     "media": "5,000",
                   }
                 ]
@@ -225,7 +225,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -234,7 +234,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -243,7 +243,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -252,7 +252,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 1,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -261,7 +261,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 2,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -270,7 +270,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 4,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   },
                   {
@@ -279,7 +279,7 @@ const store = createStore({
                     "peso": 1,
                     "tipoEtapa": 6,
                     "codigoTurma": 0,
-                    "falta": "9,0000",
+                    "percentualFalta": 9.0000,
                     "media": "9,0000",
                   }
                 ]

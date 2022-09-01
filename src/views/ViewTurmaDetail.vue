@@ -18,7 +18,7 @@
                 </el-select>
                 <el-select @change="setTipoGrafico" class="m-2" :placeholder="tipoGrafico.nome" size="large">
                     <el-option
-                    v-for="tipo in [{ slug: 'media', nome: 'Média' }, { slug: 'falta', nome: 'Falta' }]"
+                    v-for="tipo in [{ slug: 'media', nome: 'Média', suffix: '' }, { slug: 'percentualFalta', nome: 'Percentual de Falta', suffix: '%' }]"
                     :key="tipo.slug"
                     :label="tipo.nome"
                     :value="tipo"
@@ -26,7 +26,7 @@
                 </el-select>
                 
             </div>
-            <MyChart :dataChart="chartData"/>
+            <MyChart :dataChart="chartData" :suffix="tipoGrafico.suffix"/>
         </section>
         <section id="rank">
             <RankAluno/>
@@ -54,7 +54,7 @@ export default {
         return {
             turmaId,
             turma: this.$store.getters.getTurma(turmaId),
-            tipoGrafico: { slug: 'media', nome: 'Média' },
+            tipoGrafico: { slug: 'media', nome: 'Média', suffix: '' },
         }
     },
 
@@ -76,6 +76,9 @@ export default {
         chartData() {
             const dataChart = []
             this.currentDisciplina.etapas.forEach(etapa => {
+                if (this.tipoGrafico.slug === 'media') {
+                    etapa[this.tipoGrafico.slug] = etapa[this.tipoGrafico.slug].replace(',', '.')
+                }
                 dataChart.push([etapa.nomeEtapa, etapa[this.tipoGrafico.slug]])
             })
             return dataChart
