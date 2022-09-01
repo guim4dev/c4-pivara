@@ -1,8 +1,8 @@
 <template>
     <el-table :data="dataTable" id="rank"  :default-sort="{ prop: 'nota', order: 'descending' }">
-        <el-table-column prop="aluno" label="Aluno" />
+        <el-table-column prop="nome" label="Aluno" />
         <el-table-column prop="nota" label="Nota" sortable=""/>
-        <el-table-column prop="frequencia" label="Frequência" sortable=""/>
+        <el-table-column prop="falta" label="Falta" sortable=""/>
     </el-table>
 </template>
 <script>
@@ -14,26 +14,8 @@ export default {
         ElTable,
         ElTableColumn
     },
-    data(){
-        return{
-            dataTable:[
-                {
-                    aluno:"Aluno1",
-                    nota:7.5,
-                    frequencia:75
-                },
-                {
-                    aluno:"Aluno2",
-                    nota:4,
-                    frequencia:80
-                },
-                {
-                    aluno:"Aluno3",
-                    nota:10,
-                    frequencia:20
-                }
-            ]
-        }
+    props:{
+        dataTable:[]
     }
 }
 </script>

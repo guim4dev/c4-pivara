@@ -18,13 +18,12 @@
 
 <script>
 import AlunoCard from '@/components/AlunoCard.vue'
-import FilterBar from '@/components/FilterBar.vue'
 
 export default {
   name: 'ViewAlunos',
 
   components: {
-    AlunoCard,FilterBar
+    AlunoCard
   },
 
   data() {

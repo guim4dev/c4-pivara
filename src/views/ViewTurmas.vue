@@ -18,13 +18,12 @@
 
 <script>
 import TurmaCard from '@/components/TurmaCard.vue'
-import FilterBar from '@/components/FilterBar.vue'
 
 export default {
   name: 'ViewTurmas',
 
   components: {
-    TurmaCard,FilterBar
+    TurmaCard
   },
 
   data() {

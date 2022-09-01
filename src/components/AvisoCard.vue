@@ -10,7 +10,10 @@
         </section>
         <section id="content">
             <span class="material-symbols-outlined" style="font-size:22px;margin-bottom:0">error</span>
-            <h3>{{ text }}</h3>
+            <div style="display:flex;flex-direction:column;align-items: baseline;">
+                <h3>{{ text }}</h3>
+                <p style="font-size:12px">{{descricao}}</p>
+            </div>
         </section>
         <section id="tags">
             <el-tag :type="tag.type" v-for="tag in tags" :key="tags.indexOf(tag,tags)">
@@ -39,18 +42,16 @@ export default {
         text:String,
         date:String,
         status:String,
-        tags:Array
+        tags:Array,
+        descricao:String
     },
     mounted(){
         switch(this.status){
-            case 'Novo':
-                this.statusTag = {text:this.status,type:'warning',icon:'error'}
-                break;
             case 'Resolvido':
                 this.statusTag = {text:this.status,type:'success',icon:'done'}
                 break;
             case 'Pendente':
-                this.statusTag = {text:this.status,type:'danger',icon:'error'}
+                this.statusTag = {text:this.status,type:'warning',icon:'error'}
         }
     }
 }
