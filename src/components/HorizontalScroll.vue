@@ -87,7 +87,7 @@ export default {
 <style scoped>
     .horizontal-scroll{
         display: flex;
-        width: 100vw;
+        width: 100%;
         overflow: auto;
         overflow-x: visible;
     }

@@ -1,6 +1,5 @@
 <template>
   <div style="padding: 20px; position: sticky; top: 56px; background-color: white;">
-    <p> oieee </p>
     <AlunoDescription
       :aluno="aluno"
     />

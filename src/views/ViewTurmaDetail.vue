@@ -6,6 +6,9 @@
         <section id="avisos">
             <HorizontalScroll/>
         </section>
+        <section id="chart">
+            <MyChart/>
+        </section>
         <section id="rank">
             <RankAluno/>
         </section>
@@ -15,13 +18,15 @@
 import TurmaDescription from '@/components/TurmaDescription.vue'
 import HorizontalScroll from '@/components/HorizontalScroll.vue'
 import RankAluno from '@/components/RankAluno.vue'
+import MyChart from '@/components/MyChart.vue'
  
 export default {
     name:"ViewTurmaDetail",
     components:{
         TurmaDescription,
         HorizontalScroll,
-        RankAluno
+        RankAluno,
+        MyChart
     },
     data(){
         return{
@@ -48,15 +53,21 @@ export default {
         align-items: center;
         padding: 15px;
         font-family: 'Nunito', sans-serif;
+        width: 100%;
     }
 
     #avisos{
-        width: 100%;
         margin-bottom: 15px;
+        width: 100%;
     }
 
     #rank{
-        width: 100vw;
+        width: 100%;
+    }
+
+    #chart{
+        width: 100%;
+        margin-bottom: 30px;
     }
 
 </style>
