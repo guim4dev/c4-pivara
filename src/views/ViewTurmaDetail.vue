@@ -76,8 +76,12 @@ export default {
         chartData() {
             const dataChart = []
             this.currentDisciplina.etapas.forEach(etapa => {
+                if (!etapa[this.tipoGrafico.slug]) {
+                    return
+                }
+            
                 if (this.tipoGrafico.slug === 'media') {
-                    etapa[this.tipoGrafico.slug] = etapa[this.tipoGrafico.slug].replace(',', '.')
+                    etapa.media = etapa.media.replace(',', '.')
                 }
                 dataChart.push([etapa.nomeEtapa, etapa[this.tipoGrafico.slug]])
             })

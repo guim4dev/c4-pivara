@@ -2,7 +2,7 @@ import { createStore } from 'vuex'
 import _ from 'lodash'
 import autenticacaoService from '@/services/Autenticacao/autenticacaoService'
 import turmaService from '@/services/Turma/turmaService'
-import avisoService from '@/services/Aviso/avisoService'
+import avisoService from '@/services/Avisos/avisoService'
 
 const store = createStore({
   state () {
