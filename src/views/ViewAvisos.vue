@@ -1,6 +1,6 @@
 <template>
   <div class="avisos-wrapper">
-    <aviso-card v-for="aviso in avisoData" :key="aviso.entidade.codigoEntidade" :cod="aviso.entidade.codigoEntidade" :isVertical="true" :text="aviso.titulo" :description="aviso.descricao" :date="aviso.dataCriacao" :status="aviso.situacao" :tags="aviso.entidade.descricaoEntidade"/>
+    <aviso-card v-for="aviso in avisoData" :key="aviso.entidade.codigoEntidade" :cod="aviso.entidade.codigoEntidade" :isVertical="true" :text="aviso.titulo" :description="aviso.descricao" :date="aviso.dataCriacao" :status="aviso.situacao" :tags="aviso.entidade.descricaoEntidade" :location="getAvisoLocation(aviso)" />
   </div>
 </template>
 <script>
@@ -12,12 +12,26 @@ export default {
   components:{
     AvisoCard
   },
-  mounted(){
-    console.log(this.$store.getters.getTurmas)
-  },
-  data(){
+  data() {
+    console.log(this.$store.state.data.avisos)
     return {
       avisoData: this.$store.state.data.avisos,
+    }
+  },
+
+  methods: {
+    getEntidadeRoute(tipoEntidade) {
+      const mapping = {
+        'Turma': 'turmas',
+        'Aluno': 'alunos',
+      }
+
+      return mapping[tipoEntidade]
+    },
+
+    getAvisoLocation(aviso) {
+      console.log(aviso)
+      return `/${this.getEntidadeRoute(aviso.entidade.tipoEntidade)}/${aviso.entidade.codigoEntidade}`
     }
   }
 }
