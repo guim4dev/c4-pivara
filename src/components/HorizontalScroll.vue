@@ -15,7 +15,7 @@ export default {
         data:Array
     },
     created(){
-        console.log(this.data)
+        console.log('data do Horizontal', this.data)
     }
 }
 </script>

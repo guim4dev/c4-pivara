@@ -26,6 +26,14 @@
             :value="{ codigo: disciplina.codigo, nome: disciplina.nome }"
           />
         </el-select>
+        <el-select @change="setTipoGrafico" class="m-2" :placeholder="tipoGrafico.nome" size="large">
+          <el-option
+            v-for="tipo in [{ slug: 'media', nome: 'Média', suffix: '' }, { slug: 'percentualFalta', nome: 'Percentual de Falta', suffix: '%' }]"
+            :key="tipo.slug"
+            :label="tipo.nome"
+            :value="tipo"
+          />
+        </el-select>
       </div>
     </section>
   </div>
@@ -84,7 +92,8 @@ export default {
     return {
       aluno,
       avisos: this.$store.getters.getAvisosByStudent(alunoId),
-      chosenMatricula: aluno.turmas[0].codigoMatricula
+      chosenMatricula: aluno.turmas[0].codigoMatricula,
+      tipoGrafico: { slug: 'media', nome: 'Média', suffix: '' }
     }
   },
 
@@ -109,6 +118,10 @@ export default {
     setDiscipline(newValue) {
       this.$store.commit('setChosenDiscipline', newValue);
     },
+
+    setTipoGrafico (newValue) {
+      this.tipoGrafico = newValue
+    }
   },
 
   computed: {
@@ -123,6 +136,20 @@ export default {
     listOfDisciplines () {
       return this.$store.getters.getTurma(this.$store.state.chosenClass.codigoTurma).disciplinas
     },
+
+    async chartData() {
+      const dataChart = []
+      const userDisciplineGrades = await getUserGrades(this.chosenMatricula, this.smartChosenDiscipline.codigo)
+      const disciplina = userDisciplineGrades.disciplinas[0]
+      disciplina.etapas.forEach(etapa => {
+        if (this.tipoGrafico.slug === 'media') {
+            etapa[this.tipoGrafico.slug] = etapa[this.tipoGrafico.slug].replace(',', '.')
+        }
+        dataChart.push([etapa.nomeEtapa, etapa[this.tipoGrafico.slug]])
+      })
+      return dataChart
+    }
+
   },
 };
 </script>
