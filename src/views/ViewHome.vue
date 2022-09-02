@@ -13,9 +13,6 @@ export default {
     mounted(){
         setTimeout(()=>{
             let route = '/avisos'
-            if (!this.$store.avisos || this.$store.avisos.length === 0) {
-                route = '/turmas'
-            }
             this.$router.push(route)
         },5000)
     },
