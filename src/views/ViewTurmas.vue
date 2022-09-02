@@ -31,5 +31,8 @@ export default {
       turmas: this.$store.state.data.turmas
     }
   },
+  created(){
+    window.scrollTo(0,0);
+  }
 }
 </script>

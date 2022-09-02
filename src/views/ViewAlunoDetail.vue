@@ -111,6 +111,7 @@ export default {
   },
 
   async created() {
+    window.scrollTo(0,0);
     const turmaInicial = this.aluno.turmas[0].turma
     this.$store.commit('setChosenClass', _.pick(turmaInicial, ['codigoTurma', 'nomeTurma']));
     this.$store.commit('setChosenDiscipline', _.pick(turmaInicial.disciplinas[0], ['codigo', 'nome']));

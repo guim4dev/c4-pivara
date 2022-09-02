@@ -92,6 +92,7 @@ export default {
     },
 
     created() {
+        window.scrollTo(0,0);
         const disciplinaInicial = this.turma.disciplinas[0]
         this.turma.alunos.forEach(aluno=>{
             aluno.nota = (Math.random() * (10 - 0) + 0).toFixed(2);

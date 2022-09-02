@@ -11,7 +11,7 @@
         <section id="content">
             <!--<span class="material-symbols-outlined" style="font-size:22px;margin-bottom:0">error</span>-->
             <img style="font-size:22px;margin-right:10px;margin-bottom:3px;" :src="'/img/warning.svg'"/>
-            <h3>{{ text }}</h3>
+            <h3 style="text-align:left">{{ text }}</h3>
         </section>
         <section id="tags">
             <el-tag :type="this.entidadeTag.type">

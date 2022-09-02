@@ -17,6 +17,7 @@ export default {
         },5000)
     },
     async created(){
+        window.scrollTo(0,0);
         this.$store.commit('setup')
     },
 }

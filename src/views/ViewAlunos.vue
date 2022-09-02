@@ -31,5 +31,8 @@ export default {
       alunos: this.$store.getters.getStudents
     }
   },
+  created(){
+    window.scrollTo(0,0);
+  }
 }
 </script>
