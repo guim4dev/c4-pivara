@@ -16,8 +16,8 @@ export default {
     border: 1px solid var(--color-gray-30);
     background: white;
     box-shadow: 0px 1px 6px rgba(46, 142, 255, 0.1);
-    border-radius: 4px;
-    padding: 24px;
+    border-radius: 12px;
+    padding: 15px 15px 15px 20px;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;

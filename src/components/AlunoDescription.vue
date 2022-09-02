@@ -11,13 +11,15 @@
 <style scoped>
   .custom-el-tag {
     width: fit-content;
+    font-size: 12px;
+    font-weight: bold
   }
 
   .name {
     font-weight: 700;
     text-align: left;
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 10px;
   }
 
   .content-wrapper {

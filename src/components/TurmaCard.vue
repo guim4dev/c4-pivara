@@ -4,7 +4,7 @@
       <div class="card-content">
         <h6 class="level">{{ turma.curso.tipoCurso }}</h6>
         <h3 class="name">{{ turma.nomeTurma }}</h3>
-        <el-tag class="custom-el-tag" type="warning">{{ turma.turnos.descricao }}</el-tag>
+        <el-tag class="custom-el-tag">{{ turma.turnos.descricao }}</el-tag>
       </div>
       <span style="color: #A3B1BF">{{ turma.periodoLetivo.descricao }}</span>
     </div>
@@ -14,6 +14,8 @@
 <style scoped>
   .custom-el-tag {
     width: fit-content;
+    font-size: 12px;
+    font-weight: bold;
   }
 
   .name {
